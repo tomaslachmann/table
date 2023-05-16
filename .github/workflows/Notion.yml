@@ -1,17 +1,29 @@
-on: [push]
-name: Notion x Github issues
-permissions:
-  contents: read
-  issues: write 
+name: Notion Sync
+
+on:
+  workflow_dispatch:
+  issues:
+    types:
+      [
+        opened,
+        edited,
+        labeled,
+        unlabeled,
+        assigned,
+        unassigned,
+        milestoned,
+        demilestoned,
+        reopened,
+        closed,
+      ]
+
 jobs:
-  stuff:
+  notion_job:
     runs-on: ubuntu-latest
+    name: Add GitHub Issues to Notion
     steps:
-      - uses: tryfabric/notion-github-action@v1.2.1
-        with: 
+      - name: Add GitHub Issues to Notion
+        uses: tryfabric/notion-github-action@v1
+        with:
           notion-token: ${{ secrets.NOTION_TOKEN }}
           notion-db: ${{ secrets.NOTION_DATABASE }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          notion-token: ${{ secrets.NOTION_TOKEN }}
-          notion-database: ${{ secrets.NOTION_DATABASE }}
