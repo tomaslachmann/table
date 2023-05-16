@@ -1,0 +1,14 @@
+on: [push]
+name: Notion x Github issues
+permissions:
+  contents: read
+  issues: write 
+jobs:
+  stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tryfabric/notion-github-action@v1.2.1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
