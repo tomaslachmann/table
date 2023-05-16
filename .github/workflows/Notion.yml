@@ -10,5 +10,5 @@ jobs:
       - uses: tryfabric/notion-github-action@v1.2.1
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          notion-database: ${{ secrets.NOTION_DATABASE }}
